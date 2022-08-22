@@ -4,6 +4,9 @@ const app = express();
 const mongoose = require("mongoose");
 const user = require("./routers/user")
 
+ const ejs = require ('ejs');
+
+ app.use( express.static( "assets" ) );
 
 app.use(bodyParser.json());
 
@@ -13,9 +16,14 @@ mongoose.connect('mongodb://vatsalk:ejnDb0zn54HqoEXrchNCISC54Ku4@15.206.7.200:28
     console.log('err :: ', err);
 });
 
+ app.set('view engine', 'ejs');
 
 app.get("/", (req, res) => {
   res.json({ message: "API Working" });
+});
+
+app.get("/home", (req, res) => {
+    res.render('pages/home/home')
 });
 
 app.use("/user", user);

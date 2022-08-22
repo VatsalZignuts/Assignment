@@ -7,6 +7,10 @@ const { signup, login} = require("../controllers/user")
 
 // signup
 
+router.get('/signup', (req, res) => {
+res.render('pages/auth/signup')
+});
+
 router.post(
     "/signup",
     [
@@ -22,6 +26,10 @@ router.post(
 
 
 // login
+
+router.get('/login', (req, res) => {
+  res.render('pages/auth/login')
+  });
 
 router.post(
   "/login",

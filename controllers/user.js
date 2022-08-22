@@ -14,11 +14,7 @@ const signup = async (req, res) => {
       });
   }
 
-  const {
-      username,
-      email,
-      password
-  } = req.body;
+  const { username, email, password } = req.body;
   try {
       let user = await User.findOne({
           email
@@ -29,22 +25,14 @@ const signup = async (req, res) => {
           });
       }
 
-      user = new User({
-          username,
-          email,
-          password
-      });
+      user = new User({ username, email, password });
 
       const salt = await bcrypt.genSalt(10);
       user.password = await bcrypt.hash(password, salt);
 
       await user.save();
 
-      const payload = {
-          user: {
-              id: user.id
-          }
-      };
+      const payload = { user: { id: user.id } };
 
       jwt.sign(
           payload,
@@ -78,9 +66,7 @@ const login = async (req, res) => {
 
   const { email, password } = req.body;
   try {
-    let user = await User.findOne({
-      email
-    });
+    let user = await User.findOne({ email });
     if (!user)
       return res.status(400).json({
         message: "User Not Exist"
@@ -92,11 +78,7 @@ const login = async (req, res) => {
         message: "Incorrect Password !"
       });
 
-    const payload = {
-      user: {
-        id: user.id
-      }
-    };
+    const payload = { user: { id: user.id } };
 
     jwt.sign(
       payload,
