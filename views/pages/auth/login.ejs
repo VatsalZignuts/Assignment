@@ -10,16 +10,16 @@
   <body class="container my-5" >
     <h1 style="text-align: center; padding-bottom: 5%;">Welcome to Login Page</h1>
     
-    <form style="height: 200; width: 50%; margin: auto;">
+    <form style="height: 200; width: 50%; margin: auto;" method="post" action="http://localhost:8000/user/login">
       <!-- Email input -->
       <div class="form-outline mb-4">
-        <input type="email" id="form3Example3" class="form-control" />
+        <input type="text" id="form3Example3" name="email" class="form-control" />
         <label class="form-label" for="form3Example3">Email address</label>
       </div>
     
       <!-- Password input -->
       <div class="form-outline mb-4">
-        <input type="password" id="form2Example2" class="form-control" minlength="8" />
+        <input type="password" id="form2Example2" name="password" class="form-control" minlength="8" />
         <label class="form-label" for="form2Example2">Password</label>
       </div>
     

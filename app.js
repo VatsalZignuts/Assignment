@@ -1,22 +1,26 @@
+const mongoose = require("mongoose");
 const express = require("express");
 const bodyParser = require("body-parser");
 const app = express();
-const mongoose = require("mongoose");
 const user = require("./routers/user")
 
- const ejs = require ('ejs');
+const ejs = require ('ejs');
 
- app.use( express.static( "assets" ) );
+ 
+ 
+ mongoose.connect('mongodb://vatsalk:ejnDb0zn54HqoEXrchNCISC54Ku4@15.206.7.200:28017/vatsalk?authSource=admin&ssl=false').then(() => {
+     console.log("Database connected !!!");    
+    }).catch(err => {
+        console.log('err :: ', err);
+    });
+    
 
+app.use( express.static( "assets" ) );
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-mongoose.connect('mongodb://vatsalk:ejnDb0zn54HqoEXrchNCISC54Ku4@15.206.7.200:28017/vatsalk?authSource=admin&ssl=false').then(() => {
-    console.log("Database connected !!!");    
-}).catch(err => {
-    console.log('err :: ', err);
-});
 
- app.set('view engine', 'ejs');
+app.set('view engine', 'ejs');
 
 app.get("/", (req, res) => {
   res.json({ message: "API Working" });
@@ -29,7 +33,7 @@ app.get("/home", (req, res) => {
 app.use("/user", user);
 
 app.listen(8000, (req, res) => {
-  console.log(`Server Started at PORT 4000`);
+  console.log(`Server Started at PORT 8000`);
 });
 
 

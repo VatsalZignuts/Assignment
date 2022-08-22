@@ -7,15 +7,17 @@ const User = require("../models/user");
 // signup
 
 const signup = async (req, res) => {
-  const errors = validationResult(req);
-  if (!errors.isEmpty()) {
-      return res.status(400).json({
-          errors: errors.array()
-      });
-  }
+ console.log("body",req.body);
+  // const errors = validationResult(req);
+  // if (!errors.isEmpty()) {
+  //     return res.status(400).json({
+  //         errors: errors.array()
+  //     });
+  // }
 
   const { username, email, password } = req.body;
   try {
+    console.log(req.body);
       let user = await User.findOne({
           email
       });
@@ -47,10 +49,15 @@ const signup = async (req, res) => {
           }
       );
   } catch (err) {
+    console.log(err);
       console.log(err.message);
       res.status(500).send("Error in Saving");
   }
+
+  res.render ("pages/auth/login")
 }
+
+
 
 
 // login
@@ -99,7 +106,8 @@ const login = async (req, res) => {
       message: "Server Error"
     });
   }
+  res.render ("pages/auth/login")
 }
 
 
-module.exports = { login , signup }
+module.exports = { login , signup };
