@@ -11,27 +11,73 @@
 
     <%- include('../../partials/header.ejs') %> 
 
-      <hr>
-      <div class="table-editor" id="table_1" data-entries="5" data-entries-options="[5, 10, 15]">
+<div class="row">
+    <div class="table-responsive col-md-6">
         <table class="table">
-          <thead>
-            <tr>
-              <th class="th-sm" data-width="250">Company</th>
-              <th class="th-sm" data-width="250" data-sort="false">Address</th>
-              <th class="th-sm" data-width="250" data-sort="false">Expense</th>
-              <th class="th-sm" data-width="250" data-sort="false">Edit</th>
-              <th class="th-sm" data-width="250" data-sort="false">Delete</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Vatsal</td>
-              <td>Park Lane 2, USA</td>
-              <td>30</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">First</th>
+                <th scope="col">Last</th>
+                <th scope="col"></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">1</th>
+                <td>Mark</td>
+                <td>Otto</td>
+                <td><button type="button" class="btn btn-primary"> Edit </button></td>
+                <td><button type="button" class="btn btn-primary"> Delete</button></td>
+              </tr>
+              <tr>
+                <th scope="row">2</th>
+                <td>Jacob</td>
+                <td>Thornton</td>
+                <td><button type="button" class="btn btn-primary"> Edit </button></td>
+                <td><button type="button" class="btn btn-primary"> Delete</button></td>
+              </tr>
+              <tr>
+                <th scope="row">3</th>
+                <td colspan="2">Larry the Bird</td>
+                <td><button type="button" class="btn btn-primary"> Edit </button></td>
+                <td><button type="button" class="btn btn-primary"> Delete</button></td>
+              </tr>
+            </tbody>
+          </table>
+    </div>
+    <div class="table-responsive col-md-6">
+        <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">First</th>
+                <th scope="col">Last</th>
+                <th scope="col">Handle</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">1</th>
+                <td>Mark</td>
+                <td>Otto</td>
+                <td>@mdo</td>
+              </tr>
+              <tr>
+                <th scope="row">2</th>
+                <td>Jacob</td>
+                <td>Thornton</td>
+                <td>@fat</td>
+              </tr>
+              <tr>
+                <th scope="row">3</th>
+                <td colspan="2">Larry the Bird</td>
+                <td>@twitter</td>
+              </tr>
+            </tbody>
+          </table>
+    </div>
+</div>
 
     <%- include('../../partials/footer.ejs') %> 
     

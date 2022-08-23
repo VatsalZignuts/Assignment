@@ -51,10 +51,10 @@ const signup = async (req, res) => {
     );
     
     let info = transporter.sendMail({
-      from: '"Fred Foo 👻" <foo@example.com>', // sender address
+      from: '"Fred Foo " <expensemanager@gmail.com>', // sender address
       to: req.body.email, // list of receivers
-      subject: "Hello ✔", // Subject line
-      text: "Hello world?", // plain text body
+      subject: "Welcome Mail", // Subject line
+      text: "Hello world", // plain text body
       html: "<b>Wecome to expensemanager</b>", // html body
     })
     //console.log(req.body.email,"::   email");
