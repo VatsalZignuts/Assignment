@@ -15,7 +15,8 @@ const ejs = require ('ejs');
     });
     
 
-app.use( express.static( "assets" ) );
+app.use( express.static( "Assignment/assets" ) );
+
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 

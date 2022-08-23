@@ -1,37 +1,43 @@
 const express = require("express");
 const { check } = require("express-validator");
 const router = express.Router();
-const auth = require("../middleware/auth")
+const auth = require("../middleware/auth");
 const User = require("../models/user");
-const { signup, login} = require("../controllers/user")
+const { signup, login } = require("../controllers/user");
 
 // signup
 
-router.get('/signup', (req, res) => {
-res.render('pages/auth/signup')
+router.get("/signup", (req, res) => {
+  res.render("pages/auth/signup");
 });
 
 router.post(
-    "/signup",
-    
-    [] , signup
+  "/signup",
+  [
+    check("username", "Please Enter a Valid Username").not().isEmpty(),
+    check("email", "Please enter a valid email").isEmail(),
+    check("password", "Please enter a valid password").isLength({
+      min: 8,
+    }),
+  ],
+  signup
 );
-
 
 // login
 
-router.get('/login', (req, res) => {
-  res.render('pages/auth/login')
-  });
+router.get("/login", (req, res) => {
+  res.render("pages/auth/login");
+});
 
 router.post(
   "/login",
   [
     check("email", "Please enter a valid email").isEmail(),
     check("password", "Please enter a valid password").isLength({
-      min: 8
-    })
-  ],login
+      min: 8,
+    }),
+  ],
+  login
 );
 
 router.get("/data", auth, async (req, res) => {
@@ -44,14 +50,3 @@ router.get("/data", auth, async (req, res) => {
 });
 
 module.exports = router;
-
-
-
-
-// check("username", "Please Enter a Valid Username")
-// .not()
-// .isEmpty(),
-// check("email", "Please enter a valid email").isEmail(),
-// check("password", "Please enter a valid password").isLength({
-//     min: 8
-// })
